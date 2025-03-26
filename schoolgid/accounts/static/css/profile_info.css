@@ -1,0 +1,92 @@
+.profile-info {
+    display: flex;
+    justify-content: center;
+    padding: 3px 3px;
+    margin-top: 50px;
+    margin-left: 25px;
+    gap: 5vw;
+}
+
+.profile-info>div {
+    display: flex;
+    font-size: 0.95vw;
+    letter-spacing: 0.12em;
+    padding: 10px 10px;
+    border: 1px solid rgba(97, 139, 201, 1);
+    border-radius: 10px;
+    box-shadow: 0 0 6px 1px rgba(97, 139, 201, 1);
+    max-width: 14vw;
+    min-width: 14vw;
+    align-items: center;
+    animation: .6s show-settings ease;
+}
+
+
+.profile-i {
+    display: flex;
+    flex-direction: column;
+}
+.profile-i-name {
+    font-size: 0.7vw;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.profile-f {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-f-name {
+    font-size: 0.7vw;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.profile-class {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-class-name {
+    font-size: 0.7vw;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.profile-lesson-name {
+    font-size: 0.7vw;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.profile-lesson {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-score {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-score-name {
+    font-size: 0.7vw;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.profile-joined {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-joined-name {
+    font-size: 0.7vw;
+    color: rgba(255, 255, 255, 0.5)
+}
+
+
+@keyframes show-settings {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

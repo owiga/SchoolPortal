@@ -1,0 +1,9 @@
+<div class="map-container">
+    {% for room in rooms %}
+        <div class="room" data-floor="{{ room.floor }}">
+            <h3>{{ room.name }}</h3>
+            <img src="{{ room.photo.url }}" alt="{{ room.name }}">
+            <p>{{ room.description }}</p>
+        </div>
+    {% endfor %}
+</div>

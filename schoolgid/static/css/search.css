@@ -1,0 +1,54 @@
+body {
+    background-color: #11141c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #11141c;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    transition: all 0.2s ease;
+    z-index: 10;
+    padding: 15px 30px;
+    align-items: center;
+}
+
+.search-users {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.users-list {
+    display: grid;
+    padding: 15px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    flex-direction: column;
+    border: 2px solid rgb(68, 77, 121);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 3px rgb(68, 77, 121);
+}
+
+[class^="user-block"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 5px;
+    border: 1px solid rgb(50, 50, 50);
+    border-radius: 5px;
+}
+
+[class^="user-blck-cover"] {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid white ;
+}

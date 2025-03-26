@@ -1,0 +1,154 @@
+#header__superuser_user {
+    border: 2px #fda0a0 solid;
+}
+
+#header__superuser_user:hover {
+    border: 2px #ffb8b8 solid;
+    transition: 0.2s ease;
+}
+
+#header__teacher_user {
+    border: 2px #85ff9f solid;
+}
+
+#header__teacher_user:hover {
+    border: 2px #85ff9f solid;
+    transition: 0.2s ease;
+}
+
+
+#header__text_profile {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    color: #a8b6c7;
+}
+
+#header__text_profile span:last-child {
+    transition: all 0.2s ease;
+    color: #8499b9;
+}
+
+#header__text_profile:hover {
+    color: #FFF !important; 
+}
+
+#header__text_profile:hover span:last-child {
+    color: #FFF !important; 
+}
+
+.header__profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header__sphere img {
+    align-items: center; 
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    overflow: hidden;
+    border: 1px #fff solid;
+    margin: 10px;
+}
+
+.header__arrow {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Плавный переход */
+    transform: rotate(0deg);
+}
+
+.header__arrow.open {
+    transform: rotate(180deg); /* Конечное положение (видимо) */
+  }
+
+.dropdown-content {
+    display: block;
+    pointer-events: none;
+    position: absolute;
+    background-color: #1c2334;
+    z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0;
+    top: 100%;
+    width: 226px;
+    right: -15px;
+    transform: scale(0.86);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dropdown-content.open {
+    pointer-events: all;
+    transform: scale(1);
+    opacity: 1; /* Полностью видимый */
+  }
+
+.dropdown-item {
+    padding: 18px 16px;
+    letter-spacing: 0.02em;
+    color: black;
+    text-decoration: none;
+    display: block;
+    color: rgb(132, 153, 185);
+  }
+
+.dropdown-item:hover {
+    color: #FFF;
+}
+
+#profile {
+    display: flex;
+    align-items: center;
+
+}
+.account {
+    display: flex;
+    position: relative;
+    margin: 0;
+    gap: 10px;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: 2%;
+}
+
+.search-form input {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #8499b9;
+    border-radius: 6px;
+    width: 500px;
+    background: #283147;
+    color: #FFF;
+    transition: border-bottom .4s ease;
+}
+
+.search-form input:focus,
+.search-form input:hover {
+    outline: none;
+    border-bottom: 2px solid #9f84b9;
+}
+
+
+
+
+
+
+
+
+

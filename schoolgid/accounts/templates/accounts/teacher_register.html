@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="{% static 'css/tregister.css' %}">
+    <link rel="shortcut icon" href="{% static 'media/favicon.ico' %}"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доступ по коду</title>
+    <script src="{% static 'js/secure.js' %}" defer></script>
+    <script src="{% static 'js/upload.js' %}" defer></script>
+</head>
+<body>
+    <div class="overlay" id="overlay">
+        <h2>Введите код доступа</h2>
+        <input type="password" id="accessCode" placeholder="Введите код">
+        <button onclick="checkCode()" class="access-grant">Войти</button>
+        <p id="errorMessage" style="color: red; display: none;">Неверный код!</p>
+    </div>
+    <div class="background">
+        <div class="form">
+            <div class="register-block">
+                <h1 style="text-align: center;">Регистрация учителя</h1>
+                <form method="post" action="{% url 'teacher_register' %}" enctype="multipart/form-data" class="form_text">
+                    
+                    {% csrf_token %}
+                    <div class="tregister-login">
+                        <span class="treg-text">{{ form.username.label_tag }}</span>
+                        {{ form.username }}
+                        <span class="treg-error">{{ form.username.errors|striptags }}</span>
+                    </div>
+                    
+                    <div class="tregister-email">
+                        <span class="treg-text">{{ form.email.label_tag }}</span>
+                        {{ form.email }}
+                        <span class="treg-error">{{ form.email.errors|striptags }}</span>
+                    </div>
+                    
+                    <div class="tregister-fio">
+                        <span class="treg-text">{{ form.first_name.label_tag }}</span>
+                        <div style="display: flex; max-width: 400px; gap: 15px;">
+                            {{ form.first_name }}
+                            {{ form.last_name }}
+                        </div>
+                        {% if form.first_name.errors or form.last_name.errors %}
+                        <span class="treg-error">{{ form.first_name.errors|striptags }}</span>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="tregister-lesson"  style="display: flex; flex-direction: column; justify-content: left;">
+                                <span class="treg-text">{{ form.lesson_name.label_tag }}</span>
+                            {{ form.lesson_name }}
+                    </div>
+
+                    <div class="tregister-passwords">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; flex-direction: row; padding-right: 10px; justify-content: space-between;">
+                                <span class="treg-text">{{ form.password1.label_tag }}</span>
+                                <span class="treg-text">{{ form.password2.label_tag }}</span>
+                            </div>
+                            <div style="display: flex; flex-direction: row; gap: 10px; max-width: 400px;">
+                                {{ form.password1 }}
+                                {{ form.password2 }}
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div style="display:flex; flex-direction: column; gap: 5px;">
+                        <span class="treg-text">{{ form.cover.label_tag }}</span>
+                        <div style="display: inline-flex; align-items: center; gap: 10px;">
+                            <label class="tregister-avatar" id="reg-l-cover">
+                                {{ form.cover }}
+                                {{ form.cover.errors|striptags }}
+                                <span id="fileText">+</span>
+                            </label>
+                            <span id="fileTextBefore"> Загрузить аватар </span>
+                        </div>
+                    </div>
+                    <p><button type="submit" class="tregister-submit">Зарегистрироваться</button></p>
+            </form>
+            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                <a href="{% url 'login' %}" class="tregister-redirect">Войти</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

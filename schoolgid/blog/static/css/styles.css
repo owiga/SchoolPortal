@@ -1,0 +1,166 @@
+body {
+    background-color: #11141c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header {
+    background-color: #11141c;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    transition: all 0.2s ease;
+    z-index: 10;
+    padding: 15px 30px;
+    align-items: center;
+}
+main {
+    display: block;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 50px;
+    transition: all 0.2s ease;
+}
+a {
+    color: #FFF;
+}
+
+svg{
+    display: block;
+    width: 35px;
+    height: auto;
+  }
+
+.posts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 100px;
+    background-color: rgb(34, 38, 46);
+    border: 2px solid rgb(58, 69, 119);
+    border-radius: 10px;
+    width: 600px;
+    box-shadow: 0 0 15px 1px rgb(58, 69, 119);;
+}
+
+.posts>* {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 2px solid rgb(40, 40, 40);
+}
+
+[class^="post-content"] {
+    padding: 9px 14px;
+    max-height: 60px;
+    transition: all .9s ease;
+    overflow: hidden;
+}
+
+
+[class^="post-read-more-btn"] {
+    display: block;
+    color: rgb(105, 105, 105);
+    background: linear-gradient(90deg, rgba(218,218,218,0) 60%, rgba(48,48,48,1) 75%);
+    text-align: right;
+    cursor: pointer;
+    margin-top: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.expanded {
+    max-height: 180px;
+    transition: all .9s ease;
+}
+
+[class^="title"] {
+    display: flex;
+    padding: 14px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+[class^="photo"] {
+    width: 100%;
+    height: 100%;
+}
+
+[id^="like-count"] {
+    display: flex;
+    align-self: center;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    font-size: 20px;
+    color: rgb(255, 102, 102);
+}
+
+[class^="likes-post"] {
+    display: flex;
+}
+
+[class^="time"] {
+    display: flex;
+    align-self: flex-end;
+    letter-spacing: 0.05em;
+    color: #fafafa48;
+    font-size: 12px;
+}
+
+[class^="post-footer"] {
+    display: flex;
+    justify-content: space-between;
+    margin: 9px;
+    vertical-align: middle;
+}
+
+[class^="like-button"] {
+    background-color: rgba(201, 201, 201, 0);
+    border: 0px solid;
+}
+
+[id^="svg-2"]{
+    fill:transparent; 
+    stroke:#f00;
+    stroke-width: 15px;
+    cursor:pointer;
+    transform-origin: center;
+    transition: all .2s;
+  }
+
+  [id^="svg-2"]:hover {
+    fill:rgba(255, 0, 0, 0.185);
+    transform: scale(0.88);
+}
+[id^="svg-2"].filled{
+    fill:#f00;
+    transform: scale(1);
+    animation: liked 0.8s;
+  }
+
+[id^="likes"] {
+    display: flex;
+    height: 38px;
+    width: 38px;
+}
+
+@keyframes liked {
+    from {
+        transform: scale(0.88);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+  

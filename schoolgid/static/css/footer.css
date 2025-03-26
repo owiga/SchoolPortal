@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+
+footer {
+    display: flex;
+    position: relative;
+    width: 100%;
+    bottom: 0px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    background-color: rgba(26, 26, 26, 0.692);
+    justify-content: center;
+    z-index: 5;
+}
+
+.footer-elements {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.footer-logos {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin-top: 10px ;
+}
+
+.footer-logos>div>a>img {
+    width: 20px;
+    opacity: 0.5;
+    transition: .6s ease;
+}
+
+.footer-logos>div>a {
+    text-decoration: underline;
+}
+
+.footer-logos>div>a>img:hover {
+    opacity: 1;
+}
+
+.footer-logo-phone a {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 50%;
+    height: 50px;
+    display: flex;
+    overflow: hidden;
+    transition: all .2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1) skew(3deg, -4deg);
+    box-shadow: 0 0 9px 1px white;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+}
+
+.wrapper {
+    display: block;
+    position: fixed;
+    bottom: -0px;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}

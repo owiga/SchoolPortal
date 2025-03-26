@@ -1,0 +1,238 @@
+body {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Помещаем фон за контент */
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+    top: -1%;
+    left: -1%;
+    width: 105%;
+    height: 105%;
+    background-image: url(../../../static/media/login_background.png);
+    background-size: cover;
+    background-position: center;
+    filter: blur(0.5px);
+    
+}
+
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+    height: 100vh;
+}
+
+.register-block {
+    padding: 30px 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px #fff solid;
+    
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 27px 3px rgb(224, 230, 255);;
+}
+
+.reg-text {
+    font-family: monospace;
+    font-size: 16px; 
+    color: rgb(160, 160, 160);
+}
+
+.form_text {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 450px;
+    width: 100%; /* Чтобы адаптировалась */
+}
+
+.form_text input {
+    min-width: 0; /* Важно для избежания переполнения */
+    max-width: 450px; /* Чтобы не вылазило за форму */
+    box-sizing: border-box; /* Учитываем padding и border в ширине */
+}
+
+.register-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-class {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.register-email {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-password1 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-password2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-passwords {
+    display: flex;
+}
+
+.register-fio {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-fpi {
+    max-width: 150px;
+    padding: 0 10px;
+}
+
+input:-webkit-autofill {
+    font-size: 20px !important
+}
+
+input {
+    color: #fff;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 20px !important;
+    border-bottom: 2px solid rgb(110, 110, 110);
+    transition: .3s ease;
+}
+
+input:active,
+input:focus,
+input:hover {
+    outline: none;
+	border-bottom-color: #6A679E;
+}
+
+input[type="file"]::file-selector-button {
+    background: #6a0dad;
+    padding: 10px 15px;
+    position: relative;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    transition: 0.3s ease;
+    color: white;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+  
+  .register-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #6a0dad;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: 0.5s ease;
+  }
+  
+  .register-avatar:hover {
+    background: #580a9d;
+    transform: scale(1.15);
+  }
+
+  .form-control {
+    outline: none;
+    border: none;
+    background: none;
+    color: #fff;
+    border-bottom: 2px solid rgb(110, 110, 110);
+    padding: 5px 5px;
+    min-width: 100px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  .options option {
+    color: black;
+  }
+
+  .register-submit {
+    padding: 10px;
+    width: 75%;
+    border: none;
+    background: rgb(218,218,218);
+    background: linear-gradient(150deg, rgb(255, 255, 255) 00%, rgb(227, 236, 255) 100%);
+    border-radius: 10px;
+    transition: .3s ease;
+    color: rgb(59, 59, 59);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.register-submit:hover {
+    box-shadow: 0 0 12px 3px rgba(223, 223, 223, 0.852);
+    color: rgb(0, 0, 0);
+}
+
+.register-redirect {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 450;
+    letter-spacing: 0.1em;
+    transition: .7s ease-in-out;
+    border-bottom: 2px solid transparent;
+    border-radius: 4px;
+}
+
+.register-redirect:hover {
+    border-bottom: 2px solid #6A679E;
+}
+
+.reg-error {
+    color: red;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+input {
+    padding: 10px;
+}

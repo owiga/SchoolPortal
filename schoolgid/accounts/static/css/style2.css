@@ -1,0 +1,249 @@
+body {
+    background-color: #11141c;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: all .3s ease;
+}
+header {
+    background: #11141c;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    padding: 15px 30px;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+main {
+    display: block;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 70px;
+    transition: all 0.2s ease;
+}
+a {
+    color: #FFF;
+    text-decoration: none;
+    z-index: 1000;
+}
+
+.accept-deny-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.accept-deny-btns>div {
+    border-radius: 15px;
+    padding: 10px 10px;
+    transition: 0.3s ease;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+}
+
+.accept-btn {
+    border: 1px solid rgb(64, 145, 104);
+    background: rgb(64, 145, 104);
+    box-shadow: 0 0 7px 0.1px rgb(64, 145, 104);
+}
+
+.accept-btn:hover {
+    box-shadow: 0 0 7px 2px rgb(64, 145, 104);
+}
+
+.deny-btn {
+    border: 1px solid rgb(161, 102, 94);
+    background: rgb(161, 102, 94);
+    box-shadow: 0 0 7px 0.1px rgb(161, 102, 94);
+}
+
+.deny-btn:hover {
+    box-shadow: 0 0 7px 2px rgb(161, 102, 94);
+}
+
+.add-friend-btn {
+    position: relative;
+    padding: 8px;
+    color: #d4d4d4;
+    font-size: 16px;
+    background-color: rgb(71, 106, 158);
+    border: 2px rgb(71, 106, 158) solid;
+    border-radius: 15px;
+    font-weight: 550;
+    cursor: pointer;
+    filter: drop-shadow(0 0 7px  rgba(97, 139, 201, 0.3));
+    transition: 0.4s ease;
+}
+
+.add-friend-btn:hover {
+    background-color: rgba(97, 139, 201, 1);
+    border: 2px rgba(97, 139, 201, 1) solid;
+    filter: drop-shadow(0 0 15px  rgba(97, 139, 201, 0.3));
+    color: rgb(255, 255, 255);
+}
+
+.cancel-friend-btn {
+    position: relative;
+    padding: 8px;
+    color: #d4d4d4;
+    font-size: 16px;
+    background-color: rgb(158, 71, 71);
+    border: 2px rgb(158, 71, 71) solid;
+    border-radius: 15px;
+    font-weight: 550;
+    cursor: pointer;
+    filter: drop-shadow(0 0 7px  rgba(201, 97, 97, 0.3));
+    transition: 0.4s ease;
+}
+
+.cancel-friend-btn:hover {
+    background-color: rgb(201, 97, 97);
+    border: 2px rgb(201, 97, 97) solid;
+    filter: drop-shadow(0 0 15px  rgba(201, 97, 97, 0.3));
+    color: rgb(255, 255, 255);
+}
+
+.delete-friend-btn {
+    position: relative;
+    padding: 8px;
+    color: #d4d4d4;
+    font-size: 16px;
+    background-color: rgb(158, 71, 71);
+    border: 2px rgb(158, 71, 71) solid;
+    border-radius: 15px;
+    font-weight: 550;
+    cursor: pointer;
+    filter: drop-shadow(0 0 7px  rgba(201, 97, 97, 0.3));
+    transition: 0.4s ease;
+}
+
+.delete-friend-btn:hover {
+    background-color: rgb(201, 97, 97);
+    border: 2px rgb(201, 97, 97) solid;
+    filter: drop-shadow(0 0 15px  rgba(201, 97, 97, 0.3));
+    color: rgb(255, 255, 255);
+}
+
+.logo {
+    border-radius: 50%;
+    display: flex;
+    overflow: hidden;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+}
+
+
+.avatar {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    margin: 14px 20px;
+}
+
+.razdel {
+    border-top: 2px #5b6d8a solid;
+}
+
+.user_profile {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.names {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_badge {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 23px;
+    width: 35%;
+    padding: 0 7px;
+    border: 1px #fda0a0 solid;
+    color: #fda0a0;
+    border-radius: 5px;
+    justify-content: center;
+    filter: drop-shadow(0 -5px 20px rgba(253, 160, 160, 1));
+}
+
+.superuser_user {
+    color: #fda0a0;
+}
+
+.teacher_user {
+    color: #85ff9f;
+}
+
+.superuser_user_border {
+    border: 2px #fda0a0 solid;
+}
+
+.teacher_user_border {
+    border: 2px #85ff9f solid;
+}
+
+.teacher {
+    color: #85ff9f;
+    border: 1px rgb(133, 255, 159) solid;
+    filter: drop-shadow(0 -5px 20px rgba(133, 255, 159));
+}
+
+.profile_info {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+}
+.profile {
+    width: auto;
+    padding: 20px 50px;
+}
+.grades {
+    width: auto;
+    padding: 20px 50px;
+}
+.friends {
+    width: auto;
+    padding: 20px 50px;
+}
+.settings {
+    width: auto;
+    padding: 20px 50px;
+}
+
+.school_card {
+    width: auto;
+    padding: 20px 50px;
+}
+.active {
+    animation: 1s show ease;
+    animation-fill-mode: forwards;
+}
+.active2 {
+    animation: 1s show2 ease;
+    animation-fill-mode: forwards;
+    color: rgba(97, 139, 201, 1)
+}
+@keyframes show {
+    from { border-bottom: rgba(97, 139, 201, 0) 2px solid; }
+    to { border-bottom: rgba(97, 139, 201, 1) 2px solid; }
+  }
+@keyframes show2 {
+    from { 
+        color: #FFF; }
+    to { 
+        color: rgba(97, 139, 201, 1); }
+  }
+
+
+

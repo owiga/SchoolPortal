@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Оценки</title>
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css'%}">
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grades.css' %}">
+    <script src="{% static 'js/grades.js' %}" defer></script>
+    <link rel="shortcut icon" href="{% static 'media/favicon.ico' %}"/>
+    <span id="user-info" data-username="{{ request.user.username }}"></span>
+    <span id="user-info2" data-username="{{ request.user.lesson_name }}"></span>
+    <span id="user-info3" data-username="{{ request.user.id }}"></span>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'blog_news' %}"><img src="{% static 'media/logo.png' %}" class="logo-image"></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="user_profile">
+            <img src="{{ cover.url }}" loading="lazy" class="avatar {% if user.is_superuser %}superuser_user_border{% elif user.is_teacher %} teacher_user_border{% endif %}">
+            <div class="names">
+                {% if user.is_superuser %}
+                <div class="profile_badge">
+                    <span style>STAFF</span>
+                </div>
+                {% elif user.is_teacher %}
+                <div class="profile_badge teacher">
+                    <span style>Учитель</span>
+                </div>
+                {% endif %}
+                <span style="font-size: 40px; letter-spacing: -0.02em; font-weight:bold; margin-bottom: 5px;" class="{% if user.is_superuser %}superuser_user {% elif user.is_teacher %} teacher_user {% endif %}">{{ user.first_name }} {{ user.last_name }}</span>
+                <span style="font-size: 18px; color: #c9cadd96;">{{ user.username }} {% if not user.is_teacher %} {{ user.classroom }} {% endif %}</span>
+            </div>
+        </div>
+    
+        <div class="razdel">
+            <nav class="profile_info">
+                <div class="profile route"><a href="{% url 'profile' user.username %}">Профиль</a></div>
+                <div class="friends route"><a href="{% url 'friends' user.username %}">Друзья</a></div>
+                <div class="grades route active"><a href="{% url 'add_grades' user.username %}"><span class="active2">Выставить Оценки</span></a></div>
+                <div class="settings route"><a href="{% url 'school_card' user.username %}">Школьная Карта</a></div>
+                <div class="settings route"><a href="{% url 'settings' user.username %}">Настройки</a></div>
+            </nav>
+        </div>
+        
+    </main>
+    <section style="display: flex; justify-content: center;">
+        <div class="grades-div">
+            <div class="grades-class">
+                <form method="GET" id="grades-class-form">
+                    <select class="grades-class-select" id="grades-class-select">
+                        {% for letter, numbers in classes.items %}
+                            {% for number in numbers %}
+                                {% if number == '10' and letter == 'Т' %} <option value="{{ number }}{{ letter }}" selected>{{ number }}{{ letter }}</option>
+                                {% else %} <option value="{{ number }}{{ letter }}">{{ number }}{{ letter }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        </select>
+                </form>
+            </div>
+            <div style="overflow-x: auto;">
+                <table class="grades-table">
+                    <thead>
+                        <tr>
+                            <th>Имя Фамилия</th>
+                            {% for i in n %}
+                            <th name="{{i}}">{% if i < 10 %}0{{i}}{% else %}{{i}}{%endif%}.03</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody id="user-list">
+                        <tr>
+                        {% for user in users %}
+                                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        {% empty %}
+                                <script>console.log('НИКОГО НЕТУ');</script>
+                                <td colspan="4">Ученики не найдены.</td>
+                        {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <div class="wrapper">
+        <footer>
+            <div class="footer-elements">
+                <div class="footer-info-text">Этот сайт — пока только прототип, основа для будущей полноценной версии. Данный сайт ничего не имеет общего с деятельностью МБОУ СОШ №35 г. Ижевска</div>
+                <div class="footer-logos">
+                    <div class="footer-logo-phone"><a href="tel:73412596025"><img src="{% static 'media/phone.svg' %}">+7 (3412) 59-60-25</a></div>
+                    <div class="footer-logo-vk"><a href="https://vk.com/izhevskschool35"><img src="{% static 'media/vk.svg' %}"></a></div>
+                    <div class="footer-logo-telegram"><a href="https://t.me/izhevskschool35"><img src="{% static 'media/telegram.svg' %}"></a></div>
+                    <div class="footer-logo-web"><a href="shkola35izhevsk-r18.gosweb.gosuslugi.ru"><img src="{% static 'media/web.png' %}"></a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

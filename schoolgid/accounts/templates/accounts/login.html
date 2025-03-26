@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="shortcut icon" href="{% static 'media/favicon.ico' %}"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background">
+        <div class="login-container">
+            <div class="login-block">
+                <h1>Вход в аккаунт</h1>
+                <form method="post" class="login-forms">
+                    {% csrf_token %}
+                    {{ form.username }}
+                    {{ form.password }}
+                    <button type="submit" class="login-submit">Войти</button>
+                    <span class="reg-error">{{ form.username.errors|striptags }}</span>
+                </form>
+                <p><a href="{% url 'register' %}" class="login-redirect">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

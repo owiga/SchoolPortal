@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="shortcut icon" href="{% static 'media/favicon.ico' %}"/>
+    <script src="{% static 'js/class.js' %}" defer></script>
+    <script src="{% static 'js/upload.js' %}" defer></script>
+</head>
+<body>
+    <div class="background">
+        <div class="form">
+            <div class="register-block">
+                <h1 style="text-align: center;">Регистрация ученика</h1>
+                <form method="post" action="{% url 'register' %}" enctype="multipart/form-data" class="form_text">
+                    
+                    {% csrf_token %}
+                    <div class="register-login">
+                        <span class="reg-text">{{ form.username.label_tag }}</span>
+                        {{ form.username }}
+                        <span class="reg-error">{{ form.username.errors|striptags }}</span>
+                    </div>
+                    
+                    <div class="register-email">
+                        <span class="reg-text">{{ form.email.label_tag }}</span>
+                        {{ form.email }}
+                        <span class="reg-error">{{ form.email.errors|striptags }}</span>
+                    </div>
+
+                    <div class="register-fio">
+                        <span class="reg-text">{{ form.first_name.label_tag }}</span>
+                        <div style="display: flex; max-width: 450px; gap: 15px;">
+                            {{ form.first_name }}
+                            {{ form.last_name }}
+                        </div>
+                        {% if form.first_name.errors or form.last_name.errors %}
+                        <span class="reg-error">{{ form.first_name.errors|striptags }}</span>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="register-class">
+                        <span class="reg-text">{{ form.classroom.label_tag }}</span>
+                        <div style="display: flex; justify-content: space-between; padding: 0 10%;" class="options">
+                            {{ form.classroom }}     
+                            {{ form.number }}
+                        </div>
+                        <span class="reg-error">{{ form.number.errors|striptags }}</span>
+                        <span class="reg-error">{{ form.classroom.errors|striptags }}</span>
+                    </div>
+                    
+
+                    <div class="register-passwords">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; flex-direction: row; padding-right: 10px; justify-content: space-between;">
+                                <span class="reg-text">{{ form.password1.label_tag }}</span>
+                                <span class="reg-text">{{ form.password2.label_tag }}</span>
+                            </div>
+                            <div style="display: flex; flex-direction: row; gap: 10px; max-width: 450px;">
+                                {{ form.password1 }}
+                                {{ form.password2 }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="display:flex; flex-direction: column; gap: 5px;">
+                        <span class="reg-text">{{ form.cover.label_tag }}</span>
+                        <div style="display: inline-flex; align-items: center; gap: 10px;">
+                            <label class="register-avatar" id="reg-l-cover">
+                                {{ form.cover }}
+                                {{ form.cover.errors|striptags }}
+                                <span id="fileText">+</span>
+                            </label>
+                            <span id="fileTextBefore"> Загрузить аватар </span>
+                        </div>
+                    </div>
+                    <div style="display: flex; margin: 1em; justify-content: center;"><button type="submit" class="register-submit">Зарегистрироваться</button></div>
+            </form>
+            <div style="display: flex; justify-content: space-between; align-items: center; ">
+                <a href="{% url 'teacher_register' %}" class="register-redirect"> Я педагог </a>
+                <a href="{% url 'login' %}" class="register-redirect">Войти</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

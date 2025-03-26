@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+    <link rel="shortcut icon" href="{% static 'media/favicon.ico' %}"/>
+    <script src="{% static 'js/profile.js' %}" defer></script>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'blog_news' %}"><img src="{% static 'media/logo.png' %}" class="logo-image"></a>
+        </div>
+        <div style="width: 50%;">
+            <form method="GET" action="{% url 'search_users' %}" class="search-form"  autocomplete="off">
+                <input type="text" name="q" placeholder="🔍 Поиск" required >
+            </form>
+        </div>
+        <div class="account">
+            <nav id="profile">
+                    <div class="header__block_profile">
+                        {% if request.user.is_authenticated %}
+                        <div class="header__profile"> 
+                            <div class="header__sphere">
+                                <img src="{{ request.user.cover.url }}" loading="lazy" id="{% if request.user.is_superuser %}header__superuser_user {% elif user.is_teacher %}header__teacher_user{% endif %}">
+                            </div> 
+                                <img src="{% static 'media/arrow.svg' %}" loading="lazy" class="header__arrow">  
+                        </div>
+                        <div class="dropdown-content">
+                            <div class="dropdown-item" style="display: flex; align-items: center; height: auto ; background-color: #273047;">
+                                <img src="{{ request.user.cover.url }}" loading="lazy" style="vertical-align: middle; height: 33px; width: 33px; border-radius: 50%;" id="{% if request.user.is_superuser %}header__superuser_user{% elif user.is_teacher %}header__teacher_user{% endif %}">
+                                <a href="{% url 'profile' request.user.username%}" style="display: flex; padding: 5px 15px; width: 100%; height: auto; align-items: center; text-decoration: none;">
+                                <div id="header__text_profile">
+                                    <span style="margin-bottom: 3px;">{{ request.user.username }}</span>
+                                    <span style="font-size: 12px;" >Перейти в профиль</span>
+                                </div>
+                            </a></div>
+                            <div class="dropdown-item">
+                                <a href="{% url 'zvonki' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
+                                onmouseover="this.style.color='#fff'"
+                                onmouseout="this.style.color='rgb(132, 153, 185)'">Расписание звонков
+                                </a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="{% url 'logout' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
+                                onmouseover="this.style.color='#fff'"
+                                onmouseout="this.style.color='rgb(132, 153, 185)'">Выйти 
+                                </a>
+                            </div>
+                        </div>
+                        {% else %}
+                        <a href="{% url 'login' %}">Войти</a>
+                        {% endif %}
+                    </div>
+            </nav>
+        </div>
+    </header>
+    <section class="search-users">
+        <div class="users-list">
+            {% for user in users %}
+                <a href="{% url 'profile' username=user.username %}" style="color: #fff; text-decoration: none;">
+                <div class="user-block-{{ forloop.counter }}">
+                    <img src="{{ user.cover.url }}" class="user-blck-cover" alt="123">
+                     {{ user.first_name }} {{ user.last_name }}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    <div style="min-height: 75vh;"></div>
+    <footer style="bottom: 0;">
+        <div class="footer-elements">
+            <div class="footer-info-text">Этот сайт — пока только прототип, основа для будущей полноценной версии. Данный сайт ничего не имеет общего с деятельностью МБОУ СОШ №35 г. Ижевска</div>
+            <div class="footer-logos">
+                <div class="footer-logo-phone"><a href="tel:73412596025"><img src="{% static 'media/phone.svg' %}">+7 (3412) 59-60-25</a></div>
+                <div class="footer-logo-vk"><a href="https://vk.com/izhevskschool35"><img src="{% static 'media/vk.svg' %}"></a></div>
+                <div class="footer-logo-telegram"><a href="https://t.me/izhevskschool35"><img src="{% static 'media/telegram.svg' %}"></a></div>
+                <div class="footer-logo-web"><a href="shkola35izhevsk-r18.gosweb.gosuslugi.ru"><img src="{% static 'media/web.png' %}"></a></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
