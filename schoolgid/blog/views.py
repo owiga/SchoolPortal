@@ -33,6 +33,9 @@ def search_users(request):
 
     return render(request, 'user_search.html', {'users': users})
 
+def school_map(request):
+    return render(request, "map.html")
+
 def zvonki(request):
     return render(request, 'zvonki.html')
 

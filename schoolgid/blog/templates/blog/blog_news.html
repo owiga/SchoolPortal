@@ -93,7 +93,15 @@
         
     </header>
     <div style="display: flex; justify-content: center; position: relative;">
-            <div class="posts">
+        <div class="blog-navigation">
+            <div class="blog-navigation-profile"><img src="{% static 'media/profile.svg' %}" style="filter: invert(1);" width="20px">{% if request.user.is_authenticated %}<a href="{% url 'profile' request.user.username %}">Профиль</a>
+            {% else %} <a href="{% url 'login' %}">Войти</a>
+            {% endif %}</div>
+            <div class="blog-navigation-bells"><img src="{% static 'media/bell.svg' %}" style="filter: invert(1);" width="20px"><a href="{% url 'zvonki' %}">Расписание звонков</a></div>
+            <div class="blog-navigation-map"><img src="{% static 'media/map.svg' %}" style="filter: invert(1);" width="20px"><a href="{% url 'map' %}">Карта Школы</a></div>
+            <div class="blog-navigation-phone"><img src="{% static 'media/phone.svg' %}" width="20px"><a href="#">Контактная информация</a></div>
+        </div>
+    <div class="posts">
                 {% for post in posts %}
                     <div class="post{{post.id}}">
                         {% if post.title %}
@@ -136,7 +144,7 @@
                     </div>
                     
                 {% endfor %}
-                </div>
+    </div>
     </div>
         <footer style="bottom: -150px;">
             <div class="footer-elements">

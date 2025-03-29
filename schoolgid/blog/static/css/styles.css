@@ -164,3 +164,30 @@ svg{
     }
 }
   
+.blog-navigation {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 15px;
+    top: 100px;
+    padding: 15px;
+    margin: 0 10px;
+    border: 2px solid rgb(58, 69, 119);
+    border-radius: 10px;
+    box-shadow: 0 0 15px 1px rgb(58, 69, 119);
+    height: fit-content;
+    background-color: rgb(34, 38, 46);
+    font-size: 15px;
+    letter-spacing: 0.02em;
+}
+
+[class^="blog-navigation-"] {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+[class^="blog-navigation-"] a {
+    text-decoration: none;
+}
