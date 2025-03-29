@@ -1,5 +1,6 @@
 import os
 import pymorphy3
+import json
 from collections import defaultdict
 
 from django.apps import apps
@@ -10,9 +11,10 @@ from django.contrib.auth import logout, authenticate, login
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponseRedirect, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from .forms import RegistrationForm, LoginForm, AvatarUploadForm, TeacherRegForm
-from .models import User, Profile, Friendship
+from .models import User, Profile, Friendship, PrivacySettings
 from grades.models import Grade
 
 
@@ -103,12 +105,15 @@ def friends(request, username):
         pending_requests = None
         friends_list = Friendship.objects.filter(user=user, status="accepted").values_list("friend_id", flat=True)
 
+    privacy = PrivacySettings.objects.filter(user=user).first()
+
     return render(request, 'friends/friends.html', {
         'user': user,
         'cover': user.cover,
         "sent_requests": sent_requests,
         'pending_requests': pending_requests,
         "friends": friends_list,
+        "privacy": privacy
     })
 
 
@@ -322,14 +327,17 @@ def grades(request, username):
                 middle_grades_score[key] = 0
         except ZeroDivisionError:
             continue
-    print(middle_grades_score)
+
+    privacy = PrivacySettings.objects.filter(user=user).first()
+
     return render(request, 'accounts/grades.html', {'user': user,
                                                     'cover': user.cover,
                                                     "pending_requests": pending_requests,
                                                     "sent_requests": sent_requests,
                                                     "friends": friends,
                                                     "grades_us": sorted(grades_of_user.items()),
-                                                    "middle_score": sorted(middle_grades_score.items())})
+                                                    "middle_score": sorted(middle_grades_score.items()),
+                                                    "privacy": privacy})
 
 @login_required()
 def add_grades(request, username):
@@ -419,15 +427,39 @@ def setting_profile(request, username):
 @login_required()
 def confidentiality(request, username):
     """Вкладка конфиденциальности"""
-
     user = get_object_or_404(User, username=username)
-    return render(request, 'settings/confidentiality.html', {'user': user, 'cover': user.cover})
+    if user != request.user:
+        return HttpResponseRedirect('/')
+    else:
+        privacy_user = PrivacySettings.objects.filter(user=user).first()
+        return render(request, 'settings/confidentiality.html', {'user': user,
+                                                                 'cover': user.cover,
+                                                                 'privacy_user': privacy_user})
 
 
 @login_required()
 def site_settings(request, username):
     user = get_object_or_404(User, username=username)
     return render(request, 'settings/site-settings.html', {'user': user, 'cover': user.cover})
+
+@csrf_exempt
+@login_required()
+def update_privacy(request):
+    if request.method == "POST":
+        try:
+            privacy, created = PrivacySettings.objects.get_or_create(user=request.user)
+            data = json.loads(request.body)
+            show_grades = int(data.get("show_grades", privacy.show_grades))
+            show_friends = int(data.get("show_friends", privacy.show_friends))
+            privacy.show_grades = show_grades
+            privacy.show_friends = show_friends
+            privacy.save()
+
+            return JsonResponse({"success": True, "message": f"Настройки обновлены!"})
+        except Exception as e:
+            return JsonResponse({"success": False, "error": str(e)})
+
+    return JsonResponse({"success": False, "error": "Неверный запрос"})
 
 
 def register(request):

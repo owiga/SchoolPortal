@@ -22,11 +22,11 @@
         <div class="logo">
             <a href="{% url 'blog_news' %}"><img src="{% static 'media/logo.png' %}" class="logo-image"></a>
         </div>
-        {% if user != request.user and request.user.is_authenticated %}
+        {% if request.user.is_authenticated %}
         <div>
             <div class="header__profile"> 
                 <div class="header__sphere">
-                    <img src="{{ request.user.cover.url }}" loading="lazy" id="{% if request.user.is_superuser %}header__superuser_user {% elif request.user.is_teacher %} header__teacher_user{% endif %}">
+                    <img src="{{ request.user.cover.url }}" loading="lazy" id="{% if request.user.is_superuser %}header__superuser_user{% elif user.is_teacher %}header__teacher_user{% endif %}">
                 </div> 
                     <img src="{% static 'media/arrow.svg' %}" loading="lazy" class="header__arrow">  
             </div>
@@ -126,7 +126,7 @@
                 <div class="profile-joined-name">На сайте с...</div>
                 <div class="profile-joined-join">
                     <span>{{ user.date_joined|date:"d E Y" }}</span>
-                    <span style="color: rgba(255, 255, 255, 0.452); font-size: 0.7vw;">{{ user.date_joined|time:"H:i" }}</span>
+                    <span style="color: rgba(255, 255, 255, 0.452); font-size: 12px;">{{ user.date_joined|time:"H:i" }}</span>
                 </div>
             </div>
         </div>

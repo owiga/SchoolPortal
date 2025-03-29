@@ -20,6 +20,7 @@ from django.views.generic.base import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 from blog.views import zvonki, search_users
+from accounts.views import update_privacy
 
 urlpatterns = [
     path('', RedirectView.as_view(url='/blog/')),
@@ -30,6 +31,7 @@ urlpatterns = [
     path('bells_schedule/', zvonki, name='zvonki'),
     path('users_search/', search_users, name='search_users'),
     path('grades/', include('grades.urls')),
+    path("update_privacy/", update_privacy, name="update_privacy"),
 ]
 
 if settings.DEBUG:

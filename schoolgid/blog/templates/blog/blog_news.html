@@ -58,7 +58,7 @@
                         {% if request.user.is_authenticated %}
                         <div class="header__profile"> 
                             <div class="header__sphere">
-                                <img src="{{ cover.url }}" loading="lazy" id="{% if request.user.is_superuser %}header__superuser_user {% elif user.is_teacher %}header__teacher_user{% endif %}">
+                                <img src="{{ cover.url }}" loading="lazy" id="{% if request.user.is_superuser %}header__superuser_user{% elif user.is_teacher %}header__teacher_user{% endif %}">
                             </div> 
                                 <img src="{% static 'media/arrow.svg' %}" loading="lazy" class="header__arrow">  
                         </div>

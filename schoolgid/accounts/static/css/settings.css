@@ -114,12 +114,31 @@ form {
     font-weight: 500;
     letter-spacing: 0.1em;
     flex-flow: column wrap;
-    max-width: 50%;
-    max-height: initial;
+    max-width: 700px;
     border: 2.5px solid rgba(97, 139, 201, 1);
     border-radius: 15px;
     z-index: 1;
+    gap: 10px;
     animation: .6s show-settings ease;
+}
+
+[class^="settings-show-"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+[class^="settings-show-"] select {
+    padding: 5px;
+    border-radius: 10px;
+    background: #6080ff14;
+    color: #fff;
+    border: 2px solid #97a8ec;
+}
+
+[class^="settings-show-"] option {
+    color: black;
+    background-color: #eeeeee;
 }
 
 @keyframes show-settings {

@@ -82,6 +82,21 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
 
+class PrivacySettings(models.Model):
+    PRIVACY_CHOICES = [
+        (2, 'Для всех'),
+        (1, 'Только друзья'),
+        (0, 'Только я'),
+    ]
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='privacy_settings')
+    show_friends = models.IntegerField(choices=PRIVACY_CHOICES, default=2)
+    show_grades = models.IntegerField(choices=PRIVACY_CHOICES, default=2)
+
+    def __str__(self):
+        return f"Настройки приватности {self.user.username}"
+
+
 @receiver(post_save, sender=User)
 def create_user_profile_and_card(sender, instance, created, **kwargs):
     if created:
@@ -97,7 +112,10 @@ def create_user_profile_and_card(sender, instance, created, **kwargs):
             card_number=generate_card_number()
         )
 
+        PrivacySettings.objects.create(user=instance)
+
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
     instance.schoolcard.save()
+    instance.privacy_settings.save()
