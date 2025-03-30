@@ -99,7 +99,7 @@
             {% endif %}</div>
             <div class="blog-navigation-bells"><img src="{% static 'media/bell.svg' %}" style="filter: invert(1);" width="20px"><a href="{% url 'zvonki' %}">Расписание звонков</a></div>
             <div class="blog-navigation-map"><img src="{% static 'media/map.svg' %}" style="filter: invert(1);" width="20px"><a href="{% url 'map' %}">Карта Школы</a></div>
-            <div class="blog-navigation-phone"><img src="{% static 'media/phone.svg' %}" width="20px"><a href="#">Контактная информация</a></div>
+            <div class="blog-navigation-phone"><img src="{% static 'media/phone.svg' %}" width="20px"><a href="{% url 'contacts' %}">Контактная информация</a></div>
         </div>
     <div class="posts">
                 {% for post in posts %}
@@ -153,7 +153,7 @@
                     <div class="footer-logo-phone"><a href="tel:73412596025"><img src="{% static 'media/phone.svg' %}">+7 (3412) 59-60-25</a></div>
                     <div class="footer-logo-vk"><a href="https://vk.com/izhevskschool35"><img src="{% static 'media/vk.svg' %}"></a></div>
                     <div class="footer-logo-telegram"><a href="https://t.me/izhevskschool35"><img src="{% static 'media/telegram.svg' %}"></a></div>
-                    <div class="footer-logo-web"><a href="shkola35izhevsk-r18.gosweb.gosuslugi.ru"><img src="{% static 'media/web.png' %}"></a></div>
+                    <div class="footer-logo-web"><a href="https://shkola35izhevsk-r18.gosweb.gosuslugi.ru"><img src="{% static 'media/web.png' %}"></a></div>
                 </div>
             </div>
         </footer>

@@ -1,0 +1,48 @@
+.about-time {
+    display: flex;
+    border: 2px solid rgba(97, 139, 201, 1);
+    border-radius: 10px;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
+.contact-about {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    border: 2px solid rgba(97, 139, 201, 1);
+    border-radius: 10px;
+    box-sizing: content-box;
+}
+
+.contact-row-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 25px;
+    gap: 25px;
+}
+
+.contact-row-2 {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 0 25px;
+    gap: 25px;
+}
+
+.yandex-map-button {
+    border-radius: 20px;
+    font-weight: 600;
+    padding: 15px;
+    background-color: #6080ffab;
+    width: fit-content;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all .4s ease;
+}
+
+.yandex-map-button:hover {
+    box-shadow: 0 0 10px 2px #6080ffbd;
+    color: rgba(255, 255, 255, 1);
+}

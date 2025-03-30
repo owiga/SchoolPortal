@@ -39,6 +39,9 @@ def school_map(request):
 def zvonki(request):
     return render(request, 'zvonki.html')
 
+def contact_school(request):
+    return render(request, 'contacts.html', {'cover': request.user.cover})
+
 @login_required
 @csrf_exempt
 @require_POST

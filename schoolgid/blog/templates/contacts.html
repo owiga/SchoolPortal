@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Контактная информация</title>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+        <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+        <link rel="shortcut icon" href="{% static 'media/favicon.ico' %}"/>
+        <script src="{% static 'js/profile.js' %}" defer></script>
+    </head>
+    <body style="min-height: auto;">
+        <header>
+            <div class="logo">
+                <a href="{% url 'blog_news' %}"><img src="{% static 'media/logo.png' %}" class="logo-image"></a>
+            </div>
+            <div style="width: 50%;">
+                <form method="GET" action="{% url 'search_users' %}" class="search-form"  autocomplete="off">
+                    <input type="text" name="q" placeholder="🔍 Поиск" required >
+                </form>
+            </div>
+            <div class="account">
+                <nav id="profile">
+                        <div class="header__block_profile">
+                            {% if request.user.is_authenticated %}
+                            <div class="header__profile"> 
+                                <div class="header__sphere">
+                                    <img src="{{ cover.url }}" loading="lazy" id="{% if request.user.is_superuser %}header__superuser_user{% elif user.is_teacher %}header__teacher_user{% endif %}">
+                                </div> 
+                                    <img src="{% static 'media/arrow.svg' %}" loading="lazy" class="header__arrow">  
+                            </div>
+                            <div class="dropdown-content">
+                                <div class="dropdown-item" style="display: flex; align-items: center; height: auto ; background-color: #273047;">
+                                    <img src="{{ cover.url }}" loading="lazy" style="vertical-align: middle; height: 33px; width: 33px; border-radius: 50%;" id="{% if request.user.is_superuser %}header__superuser_user{% elif user.is_teacher %}header__teacher_user{% endif %}">
+                                    <a href="{% url 'profile' request.user.username%}" style="display: flex; padding: 5px 15px; width: 100%; height: auto; align-items: center; text-decoration: none;">
+                                    <div id="header__text_profile">
+                                        <span style="margin-bottom: 3px;">{{ request.user.username }}</span>
+                                        <span style="font-size: 12px;" >Перейти в профиль</span>
+                                    </div>
+                                </a></div>
+                                <div class="dropdown-item">
+                                    <a href="{% url 'zvonki' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
+                                    onmouseover="this.style.color='#fff'"
+                                    onmouseout="this.style.color='rgb(132, 153, 185)'">Расписание звонков
+                                    </a>
+                                </div>
+                                <div class="dropdown-item">
+                                    <a href="{% url 'logout' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
+                                    onmouseover="this.style.color='#fff'"
+                                    onmouseout="this.style.color='rgb(132, 153, 185)'">Выйти 
+                                    </a>
+                                </div>
+                            </div>
+                            {% else %}
+                            <a href="{% url 'login' %}">Войти</a>
+                            {% endif %}
+                        </div>
+                </nav>
+            </div>
+        </header>
+        <div style="margin-top: 100px;"></div>
+        <div style="display: flex; flex-direction: row; justify-content: center;">
+            <div style="display: flex;flex-direction: column; gap: 25px;">
+                <section>
+                    <div class="contact-row-1">
+                        <div class="contact-about">
+                            <span style="font-weight: bold; font-size: 32px; background-color: rgb(34, 38, 46); padding: 10px; border-radius: 10px 10px 0  0;">Контакты</span>
+                            <div style="display: flex; flex-direction: column; padding: 10px; gap: 10px;">
+                                <span style="font-weight: bold; font-size: 24px;">Школа.</span>
+                                <span style="font-size: 18px;">МБОУ "СОШ №35", функционирует с 1977г.</span>
+                                <span style="font-size: 18px;"><strong>Телефон приемной:</strong> +7 (3412)59-60-25.</span>
+                                <span style="font-size: 18px;"><strong>Электронная почта школы:</strong> sc035@izh-shl.udmr.ru</span>
+                                <span style="font-size: 18px;"><strong>Адрес школы:</strong> 426069, Удмуртская Республика, г.Ижевск, ул. 30 лет Победы, д. 29</span>
+                            </div>
+                        </div>
+                        <img src="{% static 'media/school35.webp' %}" width="350px" style="border-radius: 10px;">
+                    </div>
+                </section>
+                <section>
+                    <div class="contact-row-2">
+                        <div class="contact-about">
+                            <span style="font-weight: bold; font-size: 32px; background-color: rgb(34, 38, 46); padding: 10px; border-radius: 10px 10px 0  0;">Местоположение</span>
+                            <div style="display: flex; flex-direction: column; padding: 10px; gap: 10px;">
+                                <span style="font-weight: bold; font-size: 24px;">Как добраться.</span>
+                                <span style="font-size: 18px;"><strong>Школа находится по адресу:</strong> Удмуртская Республика, г.Ижевск, ул. 30 лет Победы, д. 29</span>
+                                <li><strong>Автобус:</strong> 29, 36, 79.</li>
+                                <li><strong>Трамвай:</strong> 1, 4, 7, 10.</li>
+                                <li><strong>Троллейбус:</strong> 6, 9.</li>
+                                <a href="https://yandex.ru/maps/44/izhevsk/?ll=53.178307%2C56.867697&mode=poi&poi%5Bpoint%5D=53.177640%2C56.868108&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D1102119902&pt=56.868084%2C53.177992&z=18.38" style="text-decoration: none;" class="yandex-map-button">Положение на карте Яндекса.</a>
+                            </div>
+                        </div>
+                        <img src="{% static 'media/school352.webp' %}" width="350px" style="border-radius: 10px;">
+                    </div>
+                </section>
+            </div>
+            <section style="width: 15%; height: auto;">
+                <div class="about-time">
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <span style="font-size: 20px;"><strong>Часы приема граждан</strong></span>
+                        <span style="font-size: 17px;">Пн–пт 08:00–19:00.</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column;  gap: 5px;">
+                        <span style="font-size: 20px;"><strong>Режим работы</strong></span>
+                        <span style="font-size: 17px;">Пн-пт 8:00 - 19:00, </span>
+                        <span style="font-size: 17px;">Сб 8:00-15:00, </span>
+                        <span style="font-size: 17px;">Вс – выходной</span>
+                    </div>
+                    <span style="font-size: 17px;"><strong style="font-size: 18px;">Время начала занятий:</strong> <br>08:00</span>
+                    <span style="font-size: 17px;"><strong style="font-size: 18px;">Продолжительность учебной недели:</strong><br> 6 дней</span>
+                </div>
+            </section>
+        </div>
+        <footer style="bottom: -200px;">
+            <div class="footer-elements">
+                <div class="footer-info-text">Этот сайт — пока только прототип, основа для будущей полноценной версии. Данный сайт ничего не имеет общего с деятельностью МБОУ СОШ №35 г. Ижевска</div>
+                <div class="footer-logos">
+                    <div class="footer-logo-phone"><a href="tel:73412596025"><img src="{% static 'media/phone.svg' %}">+7 (3412) 59-60-25</a></div>
+                    <div class="footer-logo-vk"><a href="https://vk.com/izhevskschool35"><img src="{% static 'media/vk.svg' %}"></a></div>
+                    <div class="footer-logo-telegram"><a href="https://t.me/izhevskschool35"><img src="{% static 'media/telegram.svg' %}"></a></div>
+                    <div class="footer-logo-web"><a href="https://shkola35izhevsk-r18.gosweb.gosuslugi.ru"><img src="{% static 'media/web.png' %}"></a></div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
