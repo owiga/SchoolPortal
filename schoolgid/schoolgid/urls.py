@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.views.generic.base import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
-from blog.views import zvonki, search_users, school_map, contact_school
+from blog.views import zvonki, search_users, school_map, contact_school, add_news
 from accounts.views import update_privacy
 
 urlpatterns = [
@@ -33,6 +33,7 @@ urlpatterns = [
     path('users_search/', search_users, name='search_users'),
     path('grades/', include('grades.urls')),
     path("contacts/", contact_school, name="contacts"),
+    path("add_news/", add_news, name="add_news"),
     path("update_privacy/", update_privacy, name="update_privacy"),
 ]
 

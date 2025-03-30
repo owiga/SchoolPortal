@@ -78,7 +78,7 @@ svg{
 }
 
 .expanded {
-    max-height: 180px;
+    max-height: fit-content;
     transition: all .9s ease;
 }
 
@@ -190,4 +190,10 @@ svg{
 
 [class^="blog-navigation-"] a {
     text-decoration: none;
+}
+
+[class^="piflfooter-"] {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5px;
 }

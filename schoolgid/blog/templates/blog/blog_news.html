@@ -100,6 +100,7 @@
             <div class="blog-navigation-bells"><img src="{% static 'media/bell.svg' %}" style="filter: invert(1);" width="20px"><a href="{% url 'zvonki' %}">Расписание звонков</a></div>
             <div class="blog-navigation-map"><img src="{% static 'media/map.svg' %}" style="filter: invert(1);" width="20px"><a href="{% url 'map' %}">Карта Школы</a></div>
             <div class="blog-navigation-phone"><img src="{% static 'media/phone.svg' %}" width="20px"><a href="{% url 'contacts' %}">Контактная информация</a></div>
+            {% if request.user.is_teacher %}<div class="blog-navigation-phone"><img src="{% static 'media/add_news.svg' %}" style="filter: invert(1);" width="20px"><a href="{% url 'add_news' %}">Добавить новость</a></div>{% endif %}
         </div>
     <div class="posts">
                 {% for post in posts %}
@@ -139,7 +140,12 @@
                                 </div></button>
                                 <span id="like-count-{{ post.id }}">{{ post.total_likes }}</span>
                             </div>
-                            <div class="time{{post.id}}">{{ post.created_at }}</div>
+                            <div class="piflfooter-{{post.id}}">
+                                <div class="time{{post.id}}">{{ post.created_at }}</div>
+                                {% if post.author %} <a href="{% url 'profile' username=post.author.username %}" style="text-decoration: none;"><div style="display: flex; align-items: center; gap: 5px; color: #ffffffa4;" > <img src="{{ post.author.cover.url }}" width="25px" height="25px" style="border-radius: 50px; border: 1px solid #85ff9f;"> {{ post.author.first_name }} {{ post.author.last_name }} </div></a>
+                                {% else %} <div style="display: flex; align-items: center; gap: 5px; color: #ffffffa4;" > <img src="{% static 'media/logo.png' %}" width="25px" height="25px" style="border-radius: 50px; border: 1px solid #85ff9f;"> Школа №35 </div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                     

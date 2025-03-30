@@ -68,6 +68,8 @@
                      {{ user.first_name }} {{ user.last_name }}
                 </div>
             </a>
+            {% empty %}
+            <span style="grid-column: span 3; font-size: 20px; letter-spacing: 0.05em;">По запросу <strong>{{ text_query }}</strong> никого не нашлось.</span>
             {% endfor %}
         </div>
     </section>

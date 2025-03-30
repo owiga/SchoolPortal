@@ -5,6 +5,7 @@ document.querySelectorAll(".post-read-more-btn").forEach((btn) => {
 
       if (textContainer.classList.toggle("expanded")) {
         this.textContent = "Скрыть";
+        this.style.display = 'none';
       } else {
         this.textContent = "Читать дальше";
       }
