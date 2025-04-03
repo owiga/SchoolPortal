@@ -67,6 +67,7 @@ def search_users(request):
                                     Q(username__icontains=query_res) | Q(first_name__icontains=query) |
                                     Q(last_name__icontains=query) | Q(username__icontains=query))  # Фильтр по логину
 
+
     return render(request, 'user_search.html', {'users': users, 'text_query': query})
 
 

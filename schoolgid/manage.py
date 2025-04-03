@@ -5,8 +5,7 @@ import sys
 
 
 def main():
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'schoolgid.settings')
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "schoolgid.settings")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -15,7 +14,16 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    import sys
+    if hasattr(sys, '_MEIPASS'):
+        sys.argv.append('runserver')
+        sys.argv.append('127.0.0.1:8000')
     execute_from_command_line(sys.argv)
+
+    # Запуск сервера
+    from django.core.management import call_command
+    call_command('runserver', '127.0.0.1:8000')
 
 
 if __name__ == '__main__':

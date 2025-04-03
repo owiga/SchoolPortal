@@ -44,12 +44,6 @@
                                 </div>
                             </a></div>
                             <div class="dropdown-item">
-                                <a href="{% url 'zvonki' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
-                                onmouseover="this.style.color='#fff'"
-                                onmouseout="this.style.color='rgb(132, 153, 185)'">Расписание звонков
-                                </a>
-                            </div>
-                            <div class="dropdown-item">
                                 <a href="{% url 'logout' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
                                 onmouseover="this.style.color='#fff'"
                                 onmouseout="this.style.color='rgb(132, 153, 185)'">Выйти 
@@ -103,7 +97,6 @@
             <div class ="settings-choice">
                 <div class="tab-link"><a href="{% url 'settings' user.username %}">Профиль</a></div>
                 <div class="active_setting tab-link"><a href="{% url 'confidentiality' user.username %}"  style="color: #1f89d6;">Конфиденциальность</a></div>
-                <div class="tab-link"><a href="{% url 'site-settings' user.username %}">Настройки Сайта</a></div>
             </div>
             <div class="settings-block">
                 <div class="title">Конфиденциальность</div>
@@ -117,6 +110,7 @@
                         </select>
                     </form>
                 </div>
+                {% if not request.user.is_teacher %}
                 <div class="settings-show-grades">
                     Кто может видеть мои оценки?
                     <form method="post">
@@ -127,6 +121,7 @@
                         </select>
                     </form>
                 </div>
+                {%endif%}
             </div>
         </div>
     </main>

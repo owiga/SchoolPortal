@@ -3,6 +3,7 @@ let teacher_lesson = document.getElementById("user-info2").dataset.username;
 let teacher_id = document.getElementById("user-info3").dataset.username;
 let today = new Date();
 let month = today.getMonth() + 1;
+let days = document.getElementById('day_in_month').getAttribute("data-days");
 
 function fetchUsers(classroom = null) {
     let url = `../../../profile/${username}/filter_users/`;
@@ -32,10 +33,10 @@ function fetchUsers(classroom = null) {
                 let tr = document.createElement('tr');
                 tr.id = 'user-item';
                 let td = document.createElement('td');
-                td.textContent = `${user.first_name} ${user.last_name}`;
+                td.textContent = `${user.last_name} ${user.first_name}`;
                 tr.appendChild(td);
 
-                for (let i = 0; i < 31; i++) { 
+                for (let i = 0; i < days; i++) { 
                     let tdSpace = document.createElement('td');
                     tdSpace.id = 'user-item-inp';
 
