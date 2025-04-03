@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure--7a4xtximkmx77(_aw$+2d6u82i_41gq8e7yihoi0chqws(fl1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", '127.0.0.1', 'localhost', '0.0.0.0']
 
 
 # Application definition
@@ -155,17 +155,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-EMAIL_HOST_USER = 'owiga@yandex.ru'
-EMAIL_HOST_PASSWORD = open("password.txt", "r").readline()
-
-EMAIL_SERVER = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-EMAIL_ADMIN = EMAIL_HOST_USER
 
 SITE_ID = 1
 

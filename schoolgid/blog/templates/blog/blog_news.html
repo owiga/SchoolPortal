@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{% static 'media/favicon.ico' %}"/>
     <script src="{% static 'js/profile.js' %}" defer></script>
     <script src="{% static 'js/readmore.js' %}" defer></script>
+    <script src="{% static 'js/fullscreenphoto.js' %}" defer></script>
     <script defer>
     document.addEventListener('DOMContentLoaded', function () {
         const likeButtons = document.querySelectorAll('.like-button');
@@ -43,6 +44,7 @@
     </script>
 </head>
 <body>
+    <div id="overlay" style="height: 100vh; width: 100%; z-index: 12; position: fixed; display: flex; justify-content: center; align-items: center; pointer-events: none;"></div>
     <header>
         <div class="logo">
             <a href="{% url 'blog_news' %}"><img src="{% static 'media/logo.png' %}" class="logo-image"></a>
@@ -71,12 +73,6 @@
                                     <span style="font-size: 12px;" >Перейти в профиль</span>
                                 </div>
                             </a></div>
-                            <div class="dropdown-item">
-                                <a href="{% url 'zvonki' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
-                                onmouseover="this.style.color='#fff'"
-                                onmouseout="this.style.color='rgb(132, 153, 185)'">Расписание звонков
-                                </a>
-                            </div>
                             <div class="dropdown-item">
                                 <a href="{% url 'logout' %}" style="display: flex; padding: 0px 15px; position: relative; right: 15px; text-decoration: none; color: rgb(132, 153, 185); transition: all 0.4s ease;" 
                                 onmouseover="this.style.color='#fff'"
@@ -114,7 +110,8 @@
                         {% if post.content|length > 300 %}
                             <button class="post-read-more-btn" id="post-toggle-btn-{{post.id}}" data-text="post-content-{{post.id}}">Читать дальше</button>
                         {% endif %}
-                        <img src="{{ post.cover.url }}" loading="lazy" class="photo{{post.id}}">
+                        {% if post.cover %}
+                        <img src="{{ post.cover.url }}" style="cursor: pointer;" loading="lazy" class="photo{{post.id}}" data-post-id="div{{ post.id }}" onclick="enlargeImage(this)"> {% endif %}
                         <div class="post-footer{{post.id}}">
                             <div class="likes-post-{{post.id}}">
                                 <button id="like-button-{{ post.id }}" data-post-id="{{ post.id }}" class="like-button">

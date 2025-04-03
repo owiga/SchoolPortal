@@ -1,6 +1,7 @@
 import os
 import pymorphy3
 import json
+import datetime
 from collections import defaultdict
 
 from django.apps import apps
@@ -342,6 +343,10 @@ def grades(request, username):
 @login_required()
 def add_grades(request, username):
     if request.user.is_teacher == 1 and request.user.username == username:
+        date = datetime.date.today()
+        month = f"{date.month:02d}"
+        now = datetime.datetime.now()
+        day_in_month = int(str(datetime.date(now.year, 1 if now.month == 12 else now.month + 1, 1) - datetime.timedelta(days=1)).split('-')[-1])
         users = User.objects.all().filter(classroom="10Т")
         classes = {'А': ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
                    'Б': ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
@@ -354,7 +359,9 @@ def add_grades(request, username):
                                                             'classes': classes,
                                                             'users': users,
                                                             'username': request.user.username,
-                                                            'n': range(1, 32)
+                                                            'n': range(1, day_in_month + 1),
+                                                            "n_2": day_in_month,
+                                                            "month": month
                                                             })
     else:
         return HttpResponseRedirect('/')
@@ -373,7 +380,8 @@ def filter_users(request, username):
         if classroom:
             users = users.filter(classroom=classroom)
 
-        user_data = list(users.values('id', 'first_name', 'last_name', 'classroom'))
+        user_data = list(sorted(users.values('id', 'last_name', 'first_name', 'classroom'), key=lambda x: x['last_name']))
+        print(users)
         return JsonResponse({'users': user_data, "grades": grades_dict})
     else:
         return HttpResponseRedirect("/")

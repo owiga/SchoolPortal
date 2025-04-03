@@ -50,6 +50,3 @@ class Like(models.Model):
 
     class Meta:
         unique_together = ('user', 'post')  # Убедимся, что пользователь может поставить только один лайк на пост
-
-    def __str__(self):
-        return f"{self.user.username} liked {self.blog.post.title}"
