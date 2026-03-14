@@ -38,6 +38,12 @@
 ## Архитектура проекта
 ```text
 school-guide/
+ ├ accounts/
+ ├ blog/
+ ├ grades/
+ ├ map/
+ ├ media/
+ ├ school_card/
  ├ templates/
  ├ static/
  ├ models.py
