@@ -56,3 +56,5 @@ python manage.py runserver
 
 ## Другие файлы
 - [Видео демонстрации работоспособности](https://disk.yandex.ru/d/en1P7ulS0zoENA)
+- [Техническое описание проекта](tech_info.pdf)
+- [Презентация](presentation.pdf)
