@@ -54,7 +54,7 @@ school-guide/
 
 ## Установка проекта
 ```bash
-git clone https://github.com/username/school-guide
+git clone https://github.com/owiga/SchoolPortal
 cd school-guide
 pip install -r requirements.txt
 python manage.py runserver
