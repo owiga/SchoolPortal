@@ -1,4 +1,4 @@
-#№ School Guide (Школьный Гид)
+## School Guide (Школьный Гид)
 
 ![HTML5](https://img.shields.io/badge/HTML5-orange)
 ![CSS3](https://img.shields.io/badge/CSS3-blueviolet)
@@ -55,6 +55,7 @@ school-guide/
  ├─ views.py         # App Views & Controllers
  ├─ urls.py          # Route Handling
  └─ settings.py      # Project Settings
+```
 
 ## 📦 Getting Started
 ### Prerequisites
