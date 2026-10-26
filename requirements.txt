@@ -1,5 +1,5 @@
 asgiref==3.8.1
-certifi==2024.12.14
+certifi==2026.10.19
 charset-normalizer==3.4.1
 colorama==0.4.6
 DAWG-Python==0.7.2
