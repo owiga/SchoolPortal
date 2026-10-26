@@ -85,5 +85,3 @@ Access the app at http://127.0.0.1:8000/
 - [Video Demo](https://disk.yandex.ru/d/en1P7ulS0zoENA)
 - [Technical Specification](tech_info.pdf)
 - [Project Presentation](presentation.pdf)
-
-"""
